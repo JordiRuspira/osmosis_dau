@@ -19,11 +19,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 from plotly.subplots import make_subplots
 from PIL import Image 
-import datetime 
-import pyautogui
+import datetime  
 
 
-API_KEY = "3b5afbf4-3004-433c-9b04-2e867026718b"
+API_KEY = st.secrets["API_KEY"]
     
 SQL_QUERY = """  with daily_users_lp as (select date_trunc('day',block_timestamp) as date, count(distinct liquidity_provider_address) as num_users, 'LP_USER' as type from  osmosis.core.fact_liquidity_provider_actions 
 where tx_status = 'SUCCEEDED'
